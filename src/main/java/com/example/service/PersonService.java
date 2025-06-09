@@ -40,13 +40,13 @@ public class PersonService {
 
             SearchResponse<Person> response = elasticsearchClient.search(request, Person.class);
 
-            final List<Person> list = response.hits().hits()
+         return response.hits().hits()
                     .stream()
                     .map(Hit::source)
                     .toList();
-            return list;
+
         } catch (Exception e) {
-            e.printStackTrace(); // You can add proper logging here
+            e.printStackTrace();
             return List.of();
         }    }
 }
